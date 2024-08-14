@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'gradle --hlep'
+                sh 'gradle -v'
             }
         }
 
