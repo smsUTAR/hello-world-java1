@@ -9,12 +9,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                shell  'gradlew build'
+                shell  'gradle build'
             }
         }
         stage('Test') {
             steps {
-                shell  'gradlew test'
+                shell  'gradle test'
             }
         }
         stage('Deploy') {
