@@ -1,17 +1,13 @@
 pipeline {
     agent any
-
+    tools {
+        maven 'apache-maven-3.0.1' 
+    }
     stages {
-        stage('Checkout') {
+        stage('Example') {
             steps {
-                git branch: 'master', url: 'https://github.com/nawaf83/hello-world-java1.git'
+                sh 'mvn --version'
             }
         }
-        stage('Build') {
-            steps {
-                sh 'gradle -v'
-            }
-        }
-
     }
 }
