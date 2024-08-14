@@ -13,7 +13,7 @@ pipeline {
                     if (isUnix()) {
                         sh 'gradle build'
                     } else {
-                        bat 'start gradle build'
+                        shell 'start gradle build'
                     }
                 }
             }
@@ -24,7 +24,7 @@ pipeline {
                     if (isUnix()) {
                         sh 'gradle test'
                     } else {
-                        bat 'start gradle test'
+                        shell 'start gradle test'
                     }
                 }
             }
@@ -35,7 +35,7 @@ pipeline {
                     if (isUnix()) {
                         sh 'java -jar build/libs/hello-world-java-V1.jar'
                     } else {
-                        bat 'start java -jar build/libs/hello-world-java-V1.jar'
+                        shell 'start java -jar build/libs/hello-world-java-V1.jar'
                     }
                 }
             }           
