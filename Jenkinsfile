@@ -1,12 +1,10 @@
 pipeline {
-    
     agent {
-    docker {
-        image 'gradle:6.7-jdk8'
-        args '-v /tmp:/tmp'
+        docker {
+            image 'gradle:7.1.1-jdk11'
+            args '-v /tmp:/tmp'
         }
     }
-
 
     stages {
         stage('Checkout') {
