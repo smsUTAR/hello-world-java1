@@ -9,18 +9,9 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'gradle build'
+                sh 'gradle --hlep'
             }
         }
-        stage('Test') {
-            steps {
-                sh 'gradle test'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'java -jar build/libs/hello-world-java-V1.jar'
-            }
-        }
+
     }
 }
