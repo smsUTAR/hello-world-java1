@@ -8,19 +8,32 @@ pipeline {
             }
         }
         stage('Build') {
-            steps {
-                powershell  'gradle build'
-            }
+             script {
+                    if (isUnix()) {
+                        sh 'gradle build'
+                    } else {
+                        bat 'start gradle build'
+                    }
+        }
         }
         stage('Test') {
-            steps {
-                powershell  'gradle test'
-            }
+            script {
+                    if (isUnix()) {
+                        sh 'gradle test'
+                    } else {
+                        bat 'start gradle test'
+                    }
+        }
         }
         stage('Deploy') {
+
             steps {
-                powershell 'java -jar build/libs/hello-world-java-V1.jar'
-            }
+                script {
+                    if (isUnix()) {
+                        sh 'java -jar build/libs/hello-world-java-V1.jar'
+                    } else {
+                        bat 'start java -jar build/libs/hello-world-java-V1.jar'
+                    }
         }
     }
 }
