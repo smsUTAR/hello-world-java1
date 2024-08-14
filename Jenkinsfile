@@ -9,19 +9,18 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'cd /'
                 sh 'gradle build'
             }
         }
         stage('Test') {
             steps {
-                sh 'cd /'
+
                 sh 'gradle test'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'cd /'
+
                 sh 'java -jar build/libs/hello-world-java-V1.jar'
             }
         }
