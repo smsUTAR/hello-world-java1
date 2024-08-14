@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        dockerContainer {
-            image 'gradle:7.1.1-jdk11'
-
-        }
-    }
+    agent any
 
     stages {
         stage('Checkout') {
