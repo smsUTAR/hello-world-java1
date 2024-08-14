@@ -9,22 +9,30 @@ pipeline {
         }
         stage('Build') {
             steps {
-
-                        shell 'start gradle build'
-                
+                bat '''
+                echo Running Command Prompt script
+                start gradle build
+                '''                
             }
         }
         stage('Test') {
             steps {
                 
-                        shell 'start gradle test'
+                bat '''
+                echo Running Command Prompt script
+                start gradle test
+                ''' 
                   
             }
         }
         stage('Deploy') {
             steps {
                 
-                        shell 'start java -jar build/libs/hello-world-java-V1.jar'
+
+                bat '''
+                echo Running Command Prompt script
+                start java -jar build/libs/hello-world-java-V1.jar
+                ''' 
                 
             }           
         }
