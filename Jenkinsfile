@@ -1,5 +1,12 @@
 pipeline {
-    agent { label <'any-with-jdk8-gradle-curl-unzip'> }
+    
+    agent {
+    docker {
+        image 'gradle:6.7-jdk8'
+        args '-v /tmp:/tmp'
+        }
+    }
+
 
     stages {
         stage('Checkout') {
@@ -9,18 +16,16 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'gradle build'
+                sh './gradlew build'
             }
         }
         stage('Test') {
             steps {
-
-                sh 'gradle test'
+                sh './gradlew test'
             }
         }
         stage('Deploy') {
             steps {
-
                 sh 'java -jar build/libs/hello-world-java-V1.jar'
             }
         }
