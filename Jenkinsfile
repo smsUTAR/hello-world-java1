@@ -8,25 +8,28 @@ pipeline {
             }
         }
         stage('Build') {
-             script {
+            steps {
+                script {
                     if (isUnix()) {
                         sh 'gradle build'
                     } else {
                         bat 'start gradle build'
                     }
-        }
+                }
+            }
         }
         stage('Test') {
-            script {
+            steps {
+                script {
                     if (isUnix()) {
                         sh 'gradle test'
                     } else {
                         bat 'start gradle test'
                     }
-        }
+                }
+            }
         }
         stage('Deploy') {
-
             steps {
                 script {
                     if (isUnix()) {
@@ -34,6 +37,8 @@ pipeline {
                     } else {
                         bat 'start java -jar build/libs/hello-world-java-V1.jar'
                     }
+                }
+            }           
         }
     }
 }
