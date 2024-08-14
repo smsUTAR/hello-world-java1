@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker {
+        dockerContainer {
             image 'gradle:7.1.1-jdk11'
             args '-v /tmp:/tmp'
         }
