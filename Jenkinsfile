@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                 else {
+
                         shell 'start gradle build'
                 
             }
@@ -31,4 +31,4 @@ pipeline {
     
 }
     }
-}
+
