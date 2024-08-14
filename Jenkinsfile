@@ -9,17 +9,17 @@ pipeline {
         }
         stage('Build') {
             steps {
-                shell  'gradle build'
+                powershell  'gradle build'
             }
         }
         stage('Test') {
             steps {
-                shell  'gradle test'
+                powershell  'gradle test'
             }
         }
         stage('Deploy') {
             steps {
-                shell 'java -jar build/libs/hello-world-java-V1.jar'
+                powershell 'java -jar build/libs/hello-world-java-V1.jar'
             }
         }
     }
