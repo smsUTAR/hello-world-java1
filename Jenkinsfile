@@ -9,12 +9,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh './gradlew build'
+                sh 'C:/Hello-world-java/gradlew.bat build'
             }
         }
         stage('Test') {
             steps {
-                sh './gradlew test'
+                sh 'C:/Hello-world-java/gradlew.bat test'
             }
         }
         stage('Deploy') {
