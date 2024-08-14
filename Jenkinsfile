@@ -9,12 +9,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                powershell  'gradlew.bat build'
+                powershell  'gradle build'
             }
         }
         stage('Test') {
             steps {
-                powershell  'gradlew.bat test'
+                powershell  'gradle test'
             }
         }
         stage('Deploy') {
