@@ -1,5 +1,6 @@
 pipeline {
     agent any
+
     stages {
         stage('Checkout') {
             steps {
@@ -7,14 +8,25 @@ pipeline {
             }
         }
         stage('Build') {
-            steps { powershell 'gradle clean build'}
+            steps {
+
+                        powershell 'gradle clean build'
+                
+            }
         }
         stage('Test') {
-            steps { powershell 'gradle test'}
+            steps {
+                
+                        powershell 'gradle test'
+                  
+            }
         }
         stage('Deploy') {
-            steps { powershell 'java -jar build/libs/hello-world-java-V1.jar'}           
-        }    
+            steps {                
+                        powershell 'java -jar build/libs/hello-world-java-V1.jar'
+                 }           
+        }
+    
 }
 
 post {
@@ -24,12 +36,12 @@ post {
         }
         success {
             echo 'Build succeeded!!!'
-            // You could add notification steps here
+            // You could add notification steps here, e.g., send an email
         }
         failure {
             echo 'Build failed!'
-            // You could add notification steps here
+            // You could add notification steps here, e.g., send an email or Slack message
         }
     }
-}
+    }
 
