@@ -7,6 +7,13 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/nawaf83/hello-world-java1.git'
             }
         }
+    stage('path') {
+            steps {
+
+                        powershell 'path C:\gradle 7.6.1\bin'
+                
+            }
+        
         stage('Build') {
             steps {
 
