@@ -13,6 +13,7 @@ pipeline {
                         powershell 'path C:/gradle 7.6.1/bin'
                 
             }
+    }
         
         stage('Build') {
             steps {
