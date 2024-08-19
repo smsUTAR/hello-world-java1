@@ -38,7 +38,7 @@ post {
             // You could add notification steps here, e.g., send an email
         }
         failure {
-            echo 'Build failed!1!'
+            echo 'Build failed!!'
             // You could add notification steps here, e.g., send an email or Slack message
         }
     }
