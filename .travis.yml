@@ -1,0 +1,48 @@
+language: java
+jdk:
+  - openjdk8
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
+stages:
+  - name: build
+  - name: test
+  - name: deploy
+    if: tag IS present  # Only run deploy stage if a tag is present
+
+jobs:
+  include:
+    - stage: build
+      script:
+        - ./gradlew clean compileJava
+
+    - stage: test
+      script:
+        - ./gradlew test
+      after_failure:
+        - echo "Tests failed. Check the test results for details."
+      after_success:
+        - echo "Tests passed successfully."
+    
+    - stage: deploy
+      script:
+        - ./gradlew build  # Build the project
+      deploy:
+        provider: releases
+        api_key: $GITHUB_TOKEN
+        file:
+          - build/libs/*  # JAR file
+          - build/reports/tests/*           # Test Report (HTML)
+        skip_cleanup: true
+        on:
+          tags: true
+
+notifications:
+  email:
+    recipients:
+      - nawaf_83@hotmail.com
+    on_success: always
+    on_failure: always
