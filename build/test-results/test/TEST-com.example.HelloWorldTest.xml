@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testsuite name="com.example.HelloWorldTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-08-20T08:28:22" hostname="LKCFES254N" time="0.003">
+=======
+<testsuite name="com.example.HelloWorldTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-08-21T01:37:22" hostname="LKCFES254N" time="0.003">
+>>>>>>> ec6536d026aa7fbc0b9f9dff92e7780025df8a1d
   <properties/>
   <testcase name="testGetGreeting" classname="com.example.HelloWorldTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
