@@ -43,6 +43,6 @@ jobs:
 notifications:
   email:
     recipients:
-      - nawaf_83@hotmail.com
+      - example@email.com
     on_success: always
     on_failure: always
