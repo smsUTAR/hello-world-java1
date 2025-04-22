@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        IMAGE_NAME = 'hello-world-java:v1'
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -8,41 +12,46 @@ pipeline {
             }
         }
 
-        
         stage('Build') {
             steps {
-
-                        bat 'start gradlew build'
-                
+                bat 'gradlew build'
             }
         }
+
         stage('Test') {
             steps {
-                
-                        bat 'start gradlew test'
-                  
+                bat 'gradlew test'
             }
         }
-        stage('Deploy') {
-            steps {                
-                        powershell 'java -jar build/libs/hello-world-java-V1.jar'
-                        echo '$HOME'
-                 }           
-        }
-    
-}
 
-post {
-       
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Make sure Dockerfile is in the project root
+                    bat "docker build -t %IMAGE_NAME% ."
+                }
+            }
+        }
+
+        stage('Run Docker Container') {
+            steps {
+                script {
+                    // Stop and remove previous container if it exists
+                    bat 'docker rm -f hello-world-java-container || exit 0'
+                    
+                    // Run new container
+                    bat 'docker run -d --name hello-world-java-container -p 8080:8080 %IMAGE_NAME%'
+                }
+            }
+        }
+    }
+
+    post {
         success {
-            echo 'Build succeeded!!'
-            // You could add notification steps here, e.g., send an email
+            echo 'Build and Docker deployment successful!'
         }
         failure {
-            echo 'Build failed!!!'
-            // You, could add notification steps here, e.g., send an email or Slack message
+            echo 'Build or deployment failed!'
         }
     }
-    }
-
-
+}
