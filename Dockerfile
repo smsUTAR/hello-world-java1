@@ -8,7 +8,7 @@ WORKDIR /app
 COPY build/libs/hello-world-java-V1.jar app.jar
 
 # Expose port (if your app listens to a specific port)
-EXPOSE 8080
+EXPOSE 8085
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
