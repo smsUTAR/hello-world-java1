@@ -4,6 +4,9 @@ pipeline {
     environment {
         IMAGE_NAME = 'hello-world-java:v1'
     }
+    tools {
+    jdk 'jdk17' // name of the JDK configured in Jenkins
+}
 
     stages {
         stage('Checkout') {
