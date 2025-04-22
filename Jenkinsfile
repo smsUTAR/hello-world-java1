@@ -12,14 +12,14 @@ pipeline {
         stage('Build') {
             steps {
 
-                        bat 'gradlew build'
+                        bat 'start gradlew build'
                 
             }
         }
         stage('Test') {
             steps {
                 
-                        bat 'gradlew test'
+                        bat 'start gradlew test'
                   
             }
         }
