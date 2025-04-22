@@ -45,7 +45,7 @@ pipeline {
                     bat "docker rm -f %CONTAINER_NAME% || exit 0"
 
                     // Run the new container
-                    bat "docker run -d --name %CONTAINER_NAME% -p 8080:8080 %IMAGE_NAME%"
+                    bat "docker run -d --name %CONTAINER_NAME% -p 8081:8080 %IMAGE_NAME%"
                 }
             }
         }
