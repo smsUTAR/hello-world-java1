@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        jdk 'jdk-17'            // Name of Java 17 installed in Jenkins tools config
+        jdk 'jdk-1.8'            // Name of Java 17 installed in Jenkins tools config
         gradle 'Gradle7.1.1'  // Name of Gradle 7.1.1 in Jenkins tools config
     }
 
