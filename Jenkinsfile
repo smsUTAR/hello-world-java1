@@ -1,12 +1,15 @@
 pipeline {
     agent any
 
+    tools {
+        jdk 'jdk17'            // Name of Java 17 installed in Jenkins tools config
+        gradle 'Gradle_7.1.1'  // Name of Gradle 7.1.1 in Jenkins tools config
+    }
+
     environment {
         IMAGE_NAME = 'hello-world-java:v1'
+        CONTAINER_NAME = 'hello-world-java-container'
     }
-    tools {
-    jdk 'jdk21' // name of the JDK configured in Jenkins
-}
 
     stages {
         stage('Checkout') {
@@ -17,7 +20,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'gradlew build'
+                bat 'gradlew clean build'
             }
         }
 
@@ -30,20 +33,19 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Make sure Dockerfile is in the project root
                     bat "docker build -t %IMAGE_NAME% ."
                 }
             }
         }
 
-        stage('Run Docker Container') {
+        stage('Deploy with Docker') {
             steps {
                 script {
-                    // Stop and remove previous container if it exists
-                    bat 'docker rm -f hello-world-java-container || exit 0'
-                    
-                    // Run new container
-                    bat 'docker run -d --name hello-world-java-container -p 8080:8080 %IMAGE_NAME%'
+                    // Stop and remove old container if running
+                    bat "docker rm -f %CONTAINER_NAME% || exit 0"
+
+                    // Run the new container
+                    bat "docker run -d --name %CONTAINER_NAME% -p 8080:8080 %IMAGE_NAME%"
                 }
             }
         }
@@ -51,7 +53,7 @@ pipeline {
 
     post {
         success {
-            echo 'Build and Docker deployment successful!'
+            echo 'Build, test, and Docker deployment succeeded!'
         }
         failure {
             echo 'Build or deployment failed!'
