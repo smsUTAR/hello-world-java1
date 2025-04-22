@@ -24,7 +24,7 @@ test {
 
     // Optionally configure test options
     testLogging {
-        // Configure which events to log during test execution
+        // Configure which events to log during test execution v
         events 'passed', 'skipped', 'failed'
     }
     finalizedBy jacocoTestReport
