@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/nawaf83/hello-world-java1.git'
+                git branch: 'master', url: 'https://github.com/smsUTAR/hello-world-java1.git'
             }
         }
         stage('Build') {
@@ -13,8 +13,8 @@ pipeline {
             steps { bat 'gradlew test'}
         }
         stage('Deploy') {
-            steps { powershell 'java -jar build/libs/hello-world-java-V1.jar'}           
-        }    
+            steps { powershell 'java -jar build/libs/hello-world-java-V1.jar'}
+        }
 }
 
 post {
