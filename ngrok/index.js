@@ -1,5 +1,5 @@
 // before run ngrok on node, run the following commands:-
-//set NGROK_AUTHTOKEN=2kovYxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//set NGROK_AUTHTOKEN=2kovYxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //node index.js
 
 const http = require('http');
